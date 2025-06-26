@@ -1,4 +1,4 @@
-from .core import shell_func as shell, ShellError
+from .core import shell, ShellError
 
 __version__ = "0.2.0"
-__all__ = ["shell", "ShellError"] 
+__all__ = ["shell", "ShellError"]
