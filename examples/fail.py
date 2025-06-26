@@ -1,4 +1,4 @@
-from pysh.core import shell_func, ShellError
+from pyshell.core import shell_func, ShellError
 
 # Example 4: Error handling demonstrations
 print("\n=== Error Handling Examples ===")

@@ -11,7 +11,7 @@ pip install pyshell
 ## Quick Start
 
 ```python
-from pysh.core import shell_func, ShellError
+from pyshell.core import shell_func, ShellError
 
 # Execute a simple command
 result = shell_func("echo 'Hello, World!'")
