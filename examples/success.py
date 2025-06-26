@@ -40,7 +40,30 @@ try:
 except ShellError as e:
     print(f"❌ System info failed: {e}")
 
-# Example 3: Data processing pipeline
+# Example 3: Using kwargs (subprocess.run arguments)
+print("\n=== Using kwargs ===")
+try:
+    # Set environment variable for this command
+    result = shell("echo $CUSTOM_VAR", env={"CUSTOM_VAR": "Hello from env!"})
+    print(f"✓ Environment variable: {result}")
+    
+    # Change working directory for this command
+    shell("mkdir -p test_data/subdir")
+    result = shell("pwd", cwd="test_data/subdir")
+    print(f"✓ Working directory changed: {result}")
+    
+    # Set timeout for a command
+    result = shell("sleep 1 && echo 'Done'", timeout=2)
+    print(f"✓ Command with timeout: {result}")
+    
+    # Multiple environment variables
+    result = shell("echo $VAR1 and $VAR2", env={"VAR1": "First", "VAR2": "Second"})
+    print(f"✓ Multiple env vars: {result}")
+    
+except ShellError as e:
+    print(f"❌ kwargs example failed: {e}")
+
+# Example 4: Data processing pipeline
 print("\n=== Data Processing Pipeline ===")
 try:
     # Create a data file with numbers
@@ -63,8 +86,8 @@ except ShellError as e:
     print(f"❌ Data processing failed: {e}")
     print(f"Error details: {e.stderr}")
 
-# Example 4e: Empty Result
-print("\n4e. Empty Result:")
+# Example 5: Empty Result
+print("\n5e. Empty Result:")
 try:
     shell("git add .")
 except ShellError as e:

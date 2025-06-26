@@ -7,11 +7,12 @@ class ShellError(Exception):
         self.stderr = stderr
         self.stdout = stdout
 
-def shell(script: str, **kwargs) -> str:
+def shell(script: str, env: dict = None, **kwargs) -> str:
     """Execute shell script as a Python function.
     
     Args:
         script: Shell script to execute
+        env: Additional environment variables to merge with existing ones
         **kwargs: Additional arguments passed to subprocess.run
         
     Returns:
@@ -20,6 +21,13 @@ def shell(script: str, **kwargs) -> str:
     Raises:
         ShellError: When command fails with non-zero exit code
     """
+    # Merge environment variables if provided
+    if env is not None:
+        import os
+        merged_env = os.environ.copy()
+        merged_env.update(env)
+        kwargs['env'] = merged_env
+    
     result = subprocess.run(
         f"set -e\n{script}",
         shell=True,

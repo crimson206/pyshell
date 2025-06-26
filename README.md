@@ -44,12 +44,13 @@ See the `examples/` directory for comprehensive examples:
 
 ## API Reference
 
-### `shell(script: str, **kwargs) -> str`
+### `shell(script: str, env: dict = None, **kwargs) -> str`
 
 Execute a shell script and return the output.
 
 **Parameters:**
 - `script`: Shell script to execute
+- `env`: Additional environment variables to merge with existing ones
 - `**kwargs`: Additional arguments passed to `subprocess.run`
 
 **Returns:**
