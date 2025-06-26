@@ -2,24 +2,26 @@
 
 Execute shell scripts as Python functions with proper error handling.
 
+> **Note**: This is different from the existing `pyshell` package on PyPI. This library focuses on simplicity and explicit error handling.
+
 ## Installation
 
 ```bash
-pip install pyshell
+pip install git+https://github.com/yourusername/pyshell.git
 ```
 
 ## Quick Start
 
 ```python
-from pyshell.core import shell_func, ShellError
+from pyshell import shell, ShellError
 
 # Execute a simple command
-result = shell_func("echo 'Hello, World!'")
+result = shell("echo 'Hello, World!'")
 print(result)  # Hello, World!
 
 # Handle errors gracefully
 try:
-    shell_func("cat nonexistent_file.txt")
+    shell("cat nonexistent_file.txt")
 except ShellError as e:
     print(f"Error: {e}")
     print(f"Return code: {e.returncode}")
@@ -42,7 +44,7 @@ See the `examples/` directory for comprehensive examples:
 
 ## API Reference
 
-### `shell_func(script: str, **kwargs) -> str`
+### `shell(script: str, **kwargs) -> str`
 
 Execute a shell script and return the output.
 
