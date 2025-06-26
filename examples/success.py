@@ -63,4 +63,12 @@ except ShellError as e:
     print(f"❌ Data processing failed: {e}")
     print(f"Error details: {e.stderr}")
 
+# Example 4e: Empty Result
+print("\n4e. Empty Result:")
+try:
+    shell("git add .")
+except ShellError as e:
+    print(f"❌ Expected error: {e}")
+    print(f"   Return code: {e.returncode}")
+
 print("\n=== All examples completed! ===")

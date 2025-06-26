@@ -36,4 +36,6 @@ except ShellError as e:
     print(f"❌ Expected error: {e}")
     print(f"   Return code: {e.returncode}")
 
+
+
 print("\n=== All examples completed! ===")

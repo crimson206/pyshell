@@ -29,8 +29,16 @@ def shell(script: str, **kwargs) -> str:
     )
     
     if result.returncode != 0:
+        # Create a more informative error message
+        script_preview = script[:100] + "..." if len(script) > 100 else script
+        stderr_preview = result.stderr.strip()[:200] + "..." if len(result.stderr) > 200 else result.stderr.strip()
+        
+        error_msg = f"Shell command failed (exit code {result.returncode}): {script_preview}"
+        if stderr_preview:
+            error_msg += f"\nError: {stderr_preview}"
+            
         raise ShellError(
-            f"Shell command failed: {script[:50]}...",
+            error_msg,
             result.returncode,
             result.stderr,
             result.stdout
