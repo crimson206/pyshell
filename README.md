@@ -7,7 +7,7 @@ Execute shell scripts as Python functions with proper error handling.
 ## Installation
 
 ```bash
-pip install git+https://github.com/yourusername/pyshell.git
+pip install git+https://github.com/crimson206/pyshell.git
 ```
 
 ## Quick Start

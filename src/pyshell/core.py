@@ -7,7 +7,7 @@ class ShellError(Exception):
         self.stderr = stderr
         self.stdout = stdout
 
-def shell_func(script: str, **kwargs) -> str:
+def shell(script: str, **kwargs) -> str:
     """Execute shell script as a Python function.
     
     Args:
