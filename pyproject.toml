@@ -1,6 +1,6 @@
 [project]
 name = "pyshell"
-version = "0.2.1"
+version = "0.3.0"
 description = "Execute shell scripts as Python functions with proper error handling"
 authors = [
     {name = "Sisung Kim",email = "sisung.kim1@gmail.com"}

@@ -61,12 +61,14 @@ Execute a shell script and return the output.
 
 ### `ShellError`
 
-Exception raised when shell commands fail.
+Exception raised when shell commands fail. This exception is automatically raised by the `shell()` function and should only be used for catching errors, not for creating them manually.
 
 **Attributes:**
 - `returncode`: Exit code of the failed command
 - `stderr`: Standard error output
 - `stdout`: Standard output
+
+**Note:** This exception is designed for internal use by the `shell()` function. Users should only catch this exception, not instantiate it directly.
 
 ## License
 
