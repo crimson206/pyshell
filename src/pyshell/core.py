@@ -1,11 +1,11 @@
 import subprocess
 
 class ShellError(Exception):
-    def __init__(self, message, returncode, stderr, stdout=""):
+    def __init__(self, message="", **kwargs):
         super().__init__(message)
-        self.returncode = returncode
-        self.stderr = stderr
-        self.stdout = stdout
+        self.returncode = kwargs.get('returncode', None)
+        self.stderr = kwargs.get('stderr', '')
+        self.stdout = kwargs.get('stdout', '')
 
 def shell(script: str, env: dict = None, **kwargs) -> str:
     """Execute shell script as a Python function.
@@ -47,9 +47,9 @@ def shell(script: str, env: dict = None, **kwargs) -> str:
             
         raise ShellError(
             error_msg,
-            result.returncode,
-            result.stderr,
-            result.stdout
+            returncode=result.returncode,
+            stderr=result.stderr,
+            stdout=result.stdout
         )
     
     return result.stdout.strip()
